@@ -22,8 +22,8 @@
         <!-- Блок добавления новой задачи -->
         <div class = "new_task">
             <form action = "new_task.php" method = "POST">
-                <input type = "text" placeholder = "Введите новую задачу" name = "description">
-                <button type = "submit"> Создать </button>
+                <input type = "text" placeholder = "Введите новую задачу" id = "description" name = "description">
+                <button id = "btn_new_task" type = "submit" disabled> Создать </button>
             </form>
         </div>
 
@@ -79,5 +79,7 @@
 
         </div>
 
+        <!-- JS -->
+        <script src = "js/block_button_task.js"></script>
     </body>
 </html>
