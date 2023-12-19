@@ -1,3 +1,5 @@
+// Блокирует нажатие кнопки авторизации, если хотя бы одно из полей не заполнено,
+// снимает и устанавливает тип курсора
 function toggleButtonState() {
     var loginValue = document.getElementById('login').value;
     var passwordValue = document.getElementById('password').value;
@@ -5,10 +7,10 @@ function toggleButtonState() {
 
     if (loginValue && passwordValue) {
         loginButton.removeAttribute('disabled');
-        loginButton.style.cursor = 'pointer'; // Изменение стиля курсора на pointer, когда кнопка активна
+        loginButton.style.cursor = 'pointer';
     } else {
         loginButton.setAttribute('disabled', 'disabled');
-        loginButton.style.cursor = 'not-allowed'; // Изменение стиля курсора на not-allowed, когда кнопка отключена
+        loginButton.style.cursor = 'not-allowed';
     }
 }
 
