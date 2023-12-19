@@ -1,15 +1,16 @@
-document.getElementById('login').addEventListener('input', function() {
-    if (document.getElementById('login').value && document.getElementById('password').value) {
-        document.getElementById('btn_login').removeAttribute('disabled');
-    } else {
-        document.getElementById('btn_login').setAttribute('disabled', 'disabled');
-    }
-});
+function toggleButtonState() {
+    var loginValue = document.getElementById('login').value;
+    var passwordValue = document.getElementById('password').value;
+    var loginButton = document.getElementById('btn_login');
 
-document.getElementById('password').addEventListener('input', function() {
-    if (document.getElementById('login').value && document.getElementById('password').value) {
-        document.getElementById('btn_login').removeAttribute('disabled');
+    if (loginValue && passwordValue) {
+        loginButton.removeAttribute('disabled');
+        loginButton.style.cursor = 'pointer'; // Изменение стиля курсора на pointer, когда кнопка активна
     } else {
-        document.getElementById('btn_login').setAttribute('disabled', 'disabled');
+        loginButton.setAttribute('disabled', 'disabled');
+        loginButton.style.cursor = 'not-allowed'; // Изменение стиля курсора на not-allowed, когда кнопка отключена
     }
-});
+}
+
+document.getElementById('login').addEventListener('input', toggleButtonState);
+document.getElementById('password').addEventListener('input', toggleButtonState);

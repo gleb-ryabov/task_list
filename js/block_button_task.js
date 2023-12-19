@@ -1,8 +1,13 @@
 document.getElementById('description').addEventListener('input', function() {
-    if (document.getElementById('description').value) {
-        document.getElementById('btn_new_task').removeAttribute('disabled');
+    var descriptionValue = document.getElementById('description').value;
+    var newTaskButton = document.getElementById('btn_new_task');
+
+    if (descriptionValue) {
+        newTaskButton.removeAttribute('disabled');
+        newTaskButton.style.cursor = 'pointer';
     } else {
-        document.getElementById('btn_new_task').setAttribute('disabled', 'disabled');
+        newTaskButton.setAttribute('disabled', 'disabled');
+        newTaskButton.style.cursor = 'not-allowed';
     }
 });
 
