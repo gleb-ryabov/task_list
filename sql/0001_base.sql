@@ -61,13 +61,6 @@ CREATE TABLE `versions_db` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Дамп данных таблицы `versions_db`
---
-
-INSERT INTO `versions_db` (`id`, `name`, `created_at`) VALUES
-(2, '0001_base.sql', '2023-12-19 15:00:11');
-
---
 -- Индексы сохранённых таблиц
 --
 

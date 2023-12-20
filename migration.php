@@ -43,6 +43,7 @@
     }
 
 
+    // Вызов функций миграции
     $files = getMigrationFiles($db);
     if (!(empty($files))) {
         echo 'Начинаем миграцию...<br><br>';
