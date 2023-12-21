@@ -13,6 +13,14 @@
             <p><button type = "submit" id="btn_login" disabled> Войти </button>
         </form>
 
+        
+        <!-- Вывод уведомления при неправильном вводе пароля -->
+        <?php
+            if (isset($_GET["password"])) {
+                echo "<script>alert('Вы ввели неправильный пароль. Попробуйте еще раз или войдите с другим логином.');</script>";
+            }
+        ?>
+
         <!-- JS -->
         <script src = "js/block_button_login.js"></script>
         <script src = "js/alert_uncorrect_password.js"></script>

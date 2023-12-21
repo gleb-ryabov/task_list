@@ -4,11 +4,11 @@
     require_once('connection_db.php');
 
     //Запрос на выборку задач текущего пользователя
-    $login = $_SESSION['login'];
+    $id = $_SESSION['id'];
     $query = "SELECT tasks.id, description, tasks.created_at, status FROM tasks 
-        JOIN users ON users.id = tasks.user_id WHERE users.login= :login ORDER BY tasks.created_at DESC";
+        JOIN users ON users.id = tasks.user_id WHERE users.id= :id ORDER BY tasks.created_at DESC";
     $stmt = $db->prepare($query);
-    $stmt -> execute(array(":login" => ($login)));
+    $stmt->execute(array(":id" => ($id)));
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -45,10 +45,8 @@
                 //$result - массив из запроса выборки задач пользователя, сделанного в начале документа
                 foreach ($result as $row){
                     // Надпись на кнопке статуса
-                    if ($row["status"] == "in work"){
-                        $button_text = "Выполнено";
-                    }
-                    else{
+                    $button_text = "Выполнено";
+                    if ($row["status"] == "complited"){
                         $button_text = "Не выполнено";
                         echo    '<style>
                                     #description_' . $row['id'] . '{
@@ -57,6 +55,7 @@
                                     }
                                 </style>';
                     }
+                    
                     //Блок конкретной задачи
                     echo 
                     '<div class = "task">

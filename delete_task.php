@@ -3,22 +3,21 @@
 
     require_once("connection_db.php");
 
-    $login = $_SESSION["login"];
+    $id = $_SESSION["id"];
     
     
     if (isset($_POST["id_task"])){
         $id_task = $_POST["id_task"];
 
         //Зарос на удаление одной задачи
-        $query = "DELETE from tasks WHERE id = :task AND user_id = (SELECT id FROM users WHERE login = :login)";
-        $stmt = $db -> prepare($query);
-        $stmt -> execute(array("task" => ($id_task), "login" => $login));
-    }
-    else{
+        $query = "DELETE from tasks WHERE id = :task AND user_id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->execute(array("task" => ($id_task), "id" => $id));
+    } else{
         //Зарос на удаление всех задач
-        $query = "DELETE from tasks WHERE user_id = (SELECT id FROM users WHERE login = :login)";
-        $stmt = $db -> prepare($query);
-        $stmt -> execute(array("login" => $login));
+        $query = "DELETE from tasks WHERE user_id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->execute(array("id" => $id));
     }
 
     header("Location: tasks.php");
